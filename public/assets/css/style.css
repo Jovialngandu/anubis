@@ -1,0 +1,42 @@
+
+.board-list {
+    min-width: 272px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+.task-card:hover {
+    background-color: #f8f9fa;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.dropdown {
+    display: none;
+}
+
+.dropdown-trigger:hover .dropdown {
+    display: block;
+}
