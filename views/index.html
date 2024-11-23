@@ -43,11 +43,11 @@
                     <bord-list name="To Do">
                         <div class="space-y-3" slot="task-card">
                             <div class="task-card bg-white p-3 rounded shadow-sm" >
-                                <task-card name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="2"></task-card>
+                                <task-card taskNumber="1"name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="2"></task-card>
     
                             </div>
                             <div class="task-card bg-white p-3 rounded shadow-sm" >
-                                <task-card name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="3"></task-card>
+                                <task-card taskNumber="2" name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="3"></task-card>
     
                             </div>
                         </div>
@@ -59,11 +59,11 @@
                     <bord-list name="In Progress">
                         <div class="space-y-3" slot="task-card">
                             <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <task-card name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="5"></task-card>
+                                <task-card  taskNumber="3" name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="5"></task-card>
 
                             </div>
                             <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <task-card name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="1"></task-card>
+                                <task-card  taskNumber="4" name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="1"></task-card>
 
                             </div>
                            
@@ -75,7 +75,7 @@
                     <bord-list name="Review">
                         <div class="space-y-3" slot="task-card">
                             <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <task-card name="Bug Testing" describtion="Review and test new features for bugs." limiteDate="to day" etiquette="6"></task-card>
+                                <task-card taskNumber="5"  name="Bug Testing" describtion="Review and test new features for bugs." limiteDate="to day" etiquette="6"></task-card>
 
                             </div>
                            
@@ -89,7 +89,7 @@
                     <bord-list name="Done">
                         <div class="space-y-3" slot="task-card">
                             <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <task-card name="Setup Development Environment" describtion="Configure development tools and environments." limiteDate="to day" etiquette="7"></task-card>
+                                <task-card taskNumber="6" name="Setup Development Environment" describtion="Configure development tools and environments." limiteDate="to day" etiquette="7"></task-card>
 
                             </div>
                            
@@ -163,14 +163,15 @@
     // })
     document.querySelector("body").onclick=()=>{
 
-        const event = new CustomEvent('updateCardElement-Project', {
-                detail: 
+        const event = new CustomEvent('RemoveTaskElement-Project', {
+            detail: 
             {
+                id:1
                 // name:" Anubis js",
                 // describtion:" competitor analysis and user surveys.",
                 // limiteDate:'to moroy',
                 // numberOffAtache:'12',
-                etiquette:("3,4").split(',')
+                // etiquette:["3","4"]
               
             }
                 
@@ -179,7 +180,7 @@
                 composed: true,
                 
             });
-            document.querySelector("task-card").dispatchEvent(event);
+            document.querySelector("bord-list").dispatchEvent(event);
             
     } 
 

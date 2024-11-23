@@ -37,11 +37,12 @@ export class Taskcard extends HTMLElement{
     constructor()
     {
         super();
+        this.taskNumber=this.getAttribute('taskNumber');
         this.name=this.getAttribute('name');
         this.describtion=this.getAttribute('describtion')
         this.numberOffAtache= this.getAttribute('numberOffAtache') ? this.getAttribute('numberOffAtache'): '0';
         this.limiteDate=this.getAttribute('limiteDate')
-        this.etiquette=this.getAttribute('etiquette').split(',')
+        this.etiquette=  this.getAttribute('etiquette') ? this.getAttribute('etiquette').split(','):[];
        
 
         this.innerHTML=this.render();
@@ -57,7 +58,7 @@ export class Taskcard extends HTMLElement{
     connectedCallback() {
         
       this.Listener()
-      this.render({name:"new name",describtion:'lorem'})
+     
      
       }
       
@@ -77,9 +78,11 @@ export class Taskcard extends HTMLElement{
     }
     ToHtmlEtiquette(){
         let htmletiquette=""
-        this.etiquette.forEach(e => {
+        
+             this.etiquette.forEach(e => {
              htmletiquette+=`<span class="px-2 py-1 text-xs rounded ${defaultEtiquette[Number(e)].style}">${defaultEtiquette[e].name}</span>`;
-        });
+             });
+         
 
         return htmletiquette;
        
@@ -90,7 +93,6 @@ export class Taskcard extends HTMLElement{
         Object.keys(datas.detail).forEach(element => {//modification des attributs 
             this[element]=datas.detail[element]
         });
-        console.log()
         this.innerHTML=this.render();
     
     }
