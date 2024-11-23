@@ -42,14 +42,63 @@ export class Taskcard extends HTMLElement{
         this.numberOffAtache= this.getAttribute('numberOffAtache') ? this.getAttribute('numberOffAtache'): '0';
         this.limiteDate=this.getAttribute('limiteDate')
         this.etiquette=this.getAttribute('etiquette').split(',')
+       
+
+        this.innerHTML=this.render();
+        
+        
+    }
+    static eventToAdd={
+
+        'updateCardElement-Project':'updateCardElementProject',
+    }
+    
+
+    connectedCallback() {
+        
+      this.Listener()
+      this.render({name:"new name",describtion:'lorem'})
+     
+      }
+      
+   
+      Listener()//permet de faire correpondre chaque ecouteur à sa fonction
+    {
+
+        Object.keys(Taskcard.eventToAdd).forEach(e => {
+
+            const methodeName=Taskcard.eventToAdd[e]//recuperation du nom dela methode a executer
+            this.addEventListener(e, (event) => {
+               typeof this[methodeName] == 'function'?this[methodeName](event):console.warn( methodeName+' is not a function of this class')
+
+          });  
+            
+          });
+    }
+    ToHtmlEtiquette(){
         let htmletiquette=""
         this.etiquette.forEach(e => {
              htmletiquette+=`<span class="px-2 py-1 text-xs rounded ${defaultEtiquette[Number(e)].style}">${defaultEtiquette[e].name}</span>`;
         });
 
-        this.innerHTML=`
+        return htmletiquette;
+       
+    }
+   
+    updateCardElementProject(datas){//ici les datas sont des attributs qui ont changé
+       
+        Object.keys(datas.detail).forEach(element => {//modification des attributs 
+            this[element]=datas.detail[element]
+        });
+        console.log()
+        this.innerHTML=this.render();
+    
+    }
+    render(){//ici le parametre sont les attributs et leurs nouvelles valeurs 
+        
+        return `
                     <div class="flex space-x-2 mb-2">
-                        ${htmletiquette}
+                        ${this.ToHtmlEtiquette()}
                     </div>
                     <h4 class="font-medium text-gray-800 mb-2">${this.name}</h4>
                     <p class="text-sm text-gray-600 mb-3">${this.describtion}</p>
@@ -66,12 +115,5 @@ export class Taskcard extends HTMLElement{
         `;
         
         
-        
     }
-
-    connectedCallback() {
-        this.onclick=()=>alert("hekk")
-      }
-   
-    
 } 

@@ -163,12 +163,15 @@
     // })
     document.querySelector("body").onclick=()=>{
 
-        const event = new CustomEvent('updateElement-Project', {
+        const event = new CustomEvent('updateCardElement-Project', {
                 detail: 
             {
-                name:" Alpha",
-                id:"1",
-                imageCategory:` <i class="fas fa-project-diagram text-blue-600"></i>`
+                // name:" Anubis js",
+                // describtion:" competitor analysis and user surveys.",
+                // limiteDate:'to moroy',
+                // numberOffAtache:'12',
+                etiquette:("3,4").split(',')
+              
             }
                 
                 ,
@@ -176,7 +179,7 @@
                 composed: true,
                 
             });
-            document.querySelector("side-bar").dispatchEvent(event);
+            document.querySelector("task-card").dispatchEvent(event);
             
     } 
 
