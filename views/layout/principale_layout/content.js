@@ -1,29 +1,25 @@
 export  const content_layout=`
-<div
-      class="flex h-screen bg-gray-50 dark:bg-gray-900"
-     
-    >
-      <!-- Desktop sidebar -->
-      <side-bar>
-      </side-bar>  
-    
-      <div class="flex flex-col flex-1">
-        <header-element>
-        </header-element>
-        <main class="h-full pb-16 overflow-y-auto">
-          <!-- Remove everything INSIDE this div to a really blank page -->
-          <div class="container px-6 mx-auto grid">
-            <h2 id="info"
-              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-               
-              >
-              Blank
-            </h2>
-          </div>
-        </main>
-      </div>
+ <!-- Top Navigation Bar -->
+   <slot name="header-element">
+   </slot>
+   
+    <!-- Main Content -->
+    <div class="flex h-screen pt-20 ">
+        <!-- Sidebar -->
+        <slot name="side-bar"></slot>
+        
+        <!-- Board Content -->
+        <slot name="main">
+        </slot>
+        
     </div>
+    <!-- Task Detail Modal -->
+    <slot name="modal">
+    </slot>
   
+     <link href="../public/assets/css/all.min.css" rel="stylesheet">
+    <link href="../public/assets/css/style.css" rel="stylesheet">
+    <link href="../public/assets/css/flowbite.min-2.2.1.css" rel="stylesheet">
 `
 
 

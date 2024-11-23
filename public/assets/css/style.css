@@ -40,3 +40,7 @@
 .dropdown-trigger:hover .dropdown {
     display: block;
 }
+
+.spaceable{
+    letter-spacing: 0px;
+}

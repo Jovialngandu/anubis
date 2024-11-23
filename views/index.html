@@ -3,412 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Management Dashboard</title>
+    <title >_</title>
    
-    <link href="../public/assets/css/all.min.css" rel="stylesheet">
+    <!-- <link href="../public/assets/css/all.min.css" rel="stylesheet"> -->
     <link href="../public/assets/css/style.css" rel="stylesheet">
     <link href="../public/assets/css/flowbite.min-2.2.1.css" rel="stylesheet">
+    <script src="customElelment.js"></script>
     <script src="../public/assets/js/tw3.4.js"></script>
    
 
     <script src="../public/assets/js/all.min.js"></script>
     <script src="../public/assets/js/flowbite.min.js"></script>
     <script src="../public/assets/js/fontawesome.min.js"></script> 
+   
+    <!-- <script src="../renderer.js"></script> -->
     
-
 </head>
-<body class="bg-gray-50">
-    <!-- Top Navigation Bar -->
-    <nav class="bg-white border-b border-gray-200 fixed w-full z-50 ">
-        <div class="px-4 py-2.5 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <img src="https://picsum.photos/32/32?random=1" alt="Logo" class="h-8">
-                <div class="flex items-center space-x-2">
-                    <span class="font-bold text-gray-700">Anubis</span>    
-                </div>
-                <div class="flex items-center space-x-2">
-                    <span class="font-semibold text-gray-700">Recent</span>
-                    <i class="fas fa-chevron-down text-gray-500 text-sm"></i>
-                </div>
-                <button class="px-3 py-1.5 bg-blue-50 text-blue-600 rounded hover:bg-blue-100">
-                    Create
-                </button>
-            </div>
+    
+    <layout-principale>
+        <header-element slot="header-element">
 
-            <div class="flex items-center space-x-4">
-                <div class="relative">
-                    <input type="text" placeholder="Search..." 
-                           class="pl-8 pr-4 py-1.5 bg-gray-100 rounded-md w-64 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                    <i class="fas fa-search absolute left-2.5 top-2.5 text-gray-400"></i>
-                </div>
-                <button class="p-2 hover:bg-gray-100 rounded">
-                    <i class="fas fa-bell text-gray-600"></i>
-                </button>
-                <button class="p-2 hover:bg-gray-100 rounded">
-                    <i class="fas fa-info-circle text-gray-600"></i>
-                </button>
-                <button class="p-2 hover:bg-gray-100 rounded">
-                    <i class="fas fa-cog text-gray-600"></i>
-                </button>            
-            </div>
-        </div>
-    </nav>
+        </header-element>
+        <side-bar slot="side-bar">
 
-    <!-- Main Content -->
-    <div class="flex h-screen pt-[57px] ">
-        <!-- Sidebar -->
-        <aside class=" w-64 bg-gray-100 border-r border-gray-200 flex-shrink-0 overflow-y-auto">
-            <div class="p-4">
-                
-
-                <div class="space-y-2">
-                    <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-200">
-                        <i class="fas fa-columns text-gray-600"></i>
-                        <span class="text-gray-700">Boards</span>
-                    </a>
-                    <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-200">
-                        <i class="fas fa-calendar text-gray-600"></i>
-                        <span class="text-gray-700">Calendar</span>
-                    </a>
-                    <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-200">
-
-                        <i class="fas fa-plus text-gray-600"></i>
-                        <span class="text-gray-700">Add another list</span>
-                    </a>
-
-                    </button>
-
-
-                    <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-200">
-                        <i class="fas fa-chart-bar text-gray-600"></i>
-                        <span class="text-gray-700">Dashboard</span>
-                    </a>
-                </div>
-
-                <div class="mt-6">
-                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Your Boards</h3>
-                    <div class="space-y-1">
-                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-200">
-                            <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center">
-                                <i class="fas fa-project-diagram text-blue-600"></i>
-                            </div>
-                            <span class="text-gray-700">Project Alpha</span>
-                        </a>
-                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-200">
-                            <div class="w-8 h-8 bg-green-100 rounded flex items-center justify-center">
-                                <i class="fas fa-tasks text-green-600"></i>
-                            </div>
-                            <span class="text-gray-700">Marketing</span>
-                        </a>
-                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-200">
-                            <div class="w-8 h-8 bg-purple-100 rounded flex items-center justify-center">
-                                <i class="fas fa-code text-purple-600"></i>
-                            </div>
-                            <span class="text-gray-700">Development</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Board Content -->
-        <main class="flex-1 overflow-x-auto">
+        </side-bar>
+       
+        <main class="flex-1 overflow-x-auto" slot="main">
             <div class="p-6">
                 <!-- Board Header -->
-                <div class="mb-6 flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <h1 class="text-2xl font-bold text-gray-800">Project Alpha</h1>
-                        <button class="p-2 hover:bg-gray-100 rounded">
-                            <i class="far fa-star text-gray-400"></i>
-                        </button>
-                        <div class="h-6 w-px bg-gray-300"></div>
-                        
-                    </div>
-
-                    <div class="flex items-center space-x-2">
-                        <button class="flex items-center space-x-1 px-3 py-1.5 text-gray-600 hover:bg-gray-100 rounded">
-                            <i class="fas fa-filter"></i>
-                            <span>Filter</span>
-                        </button>
-                        <button class="flex items-center space-x-1 px-3 py-1.5 text-gray-600 hover:bg-gray-100 rounded">
-                            <i class="fas fa-sort"></i>
-                            <span>Sort</span>
-                        </button>
-                        <button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                    </div>
-                </div>
-
+                <secondheader-element >
+                    
+                </secondheader-element>
+               
+               
                 <!-- Board Lists -->
-                <div class="flex space-x-4">
+                <div class="flex space-x-4  parent-board-list">
+                    
                     <!-- To Do List -->
-                    <div class="board-list bg-gray-100 rounded-lg p-3">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="font-semibold text-gray-700">To Do</h3>
-                            <button class="p-1.5 hover:bg-gray-200 rounded">
-                                <i class="fas fa-ellipsis-h text-gray-500"></i>
-                            </button>
-                        </div>
-
-                        <!-- Cards -->
-                        <div class="space-y-3">
-                            <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <div class="flex space-x-2 mb-2">
-                                    <span class="px-2 py-1 text-xs rounded bg-red-100 text-red-600">High Priority</span>
-                                    <span class="px-2 py-1 text-xs rounded bg-blue-100 text-blue-600">Design</span>
-                                    <span class="px-2 py-1 text-xs rounded bg-yellow-100 text-yellow-600">Medium</span>
-                                  
-                                </div>
-                                <h4 class="font-medium text-gray-800 mb-2">Design new landing page</h4>
-                                <p class="text-sm text-gray-600 mb-3">Create wireframes and mockups for the new homepage design.</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center text-gray-500 text-sm">
-                                        <i class="far fa-paper-clip mr-1"></i>
-                                        <span>5</span>
-                                    </div>
-                                    <div class="flex items-center text-gray-500 text-sm">
-                                        
-                                        <span class="text-xs text-gray-500">Date limite: 15 Mai</span>
-                                    </div>
-                                </div>
+                    <bord-list name="To Do">
+                        <div class="space-y-3" slot="task-card">
+                            <div class="task-card bg-white p-3 rounded shadow-sm" >
+                                <task-card name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="2"></task-card>
+    
                             </div>
-
-                            <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <div class="flex space-x-2 mb-2">
-                                    <span class="px-2 py-1 text-xs rounded bg-yellow-100 text-yellow-600">Medium</span>
-                                    <span class="px-2 py-1 text-xs rounded bg-purple-100 text-purple-600">Development</span>
-                                </div>
-                                <h4 class="font-medium text-gray-800 mb-2">API Integration</h4>
-                                <p class="text-sm text-gray-600 mb-3">Implement payment gateway integration.</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex -space-x-2">
-                                        <img src="https://picsum.photos/24/24?random=9" alt="Assignee" class="w-6 h-6 rounded-full border-2 border-white">
-                                    </div>
-                                    <div class="flex items-center text-gray-500 text-sm">
-                                        <i class="far fa-comment mr-1"></i>
-                                        <span>5</span>
-                                    </div>
-                                </div>
+                            <div class="task-card bg-white p-3 rounded shadow-sm" >
+                                <task-card name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="3"></task-card>
+    
                             </div>
                         </div>
-
-                        <button class="mt-3 w-full p-2 text-gray-600 hover:bg-gray-200 rounded flex items-center justify-center">
-                            <i class="fas fa-plus mr-2"></i>
-                            <span>Add a card</span>
-                        </button>
-                    </div>
+                        
+                       
+                    </bord-list>
 
                     <!-- In Progress List -->
-                    <div class="board-list bg-gray-100 rounded-lg p-3">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="font-semibold text-gray-700">In Progress</h3>
-                            <button class="p-1.5 hover:bg-gray-200 rounded">
-                                <i class="fas fa-ellipsis-h text-gray-500"></i>
-                            </button>
-                        </div>
-
-                        <div class="space-y-3">
+                    <bord-list name="In Progress">
+                        <div class="space-y-3" slot="task-card">
                             <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <div class="flex space-x-2 mb-2">
-                                    <span class="px-2 py-1 text-xs rounded bg-green-100 text-green-600">Low Priority</span>
-                                    <span class="px-2 py-1 text-xs rounded bg-indigo-100 text-indigo-600">Research</span>
-                                </div>
-                                <h4 class="font-medium text-gray-800 mb-2">Market Research</h4>
-                                <p class="text-sm text-gray-600 mb-3">Conduct competitor analysis and user surveys.</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex -space-x-2">
-                                        <img src="https://picsum.photos/24/24?random=10" alt="Assignee" class="w-6 h-6 rounded-full border-2 border-white">
-                                        <img src="https://picsum.photos/24/24?random=11" alt="Assignee" class="w-6 h-6 rounded-full border-2 border-white">
-                                    </div>
-                                    <div class="flex items-center text-gray-500 text-sm">
-                                        <i class="far fa-comment mr-1"></i>
-                                        <span>2</span>
-                                    </div>
-                                </div>
+                                <task-card name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="5"></task-card>
+
                             </div>
-                        </div>
-
-                        <button class="mt-3 w-full p-2 text-gray-600 hover:bg-gray-200 rounded flex items-center justify-center">
-                            <i class="fas fa-plus mr-2"></i>
-                            <span>Add a card</span>
-                        </button>
-                    </div>
-
-                    <!-- Review List -->
-                    <div class="board-list bg-gray-100 rounded-lg p-3">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="font-semibold text-gray-700">Review</h3>
-                            <button class="p-1.5 hover:bg-gray-200 rounded">
-                                <i class="fas fa-ellipsis-h text-gray-500"></i>
-                            </button>
-                        </div>
-
-                        <div class="space-y-3">
                             <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <div class="flex space-x-2 mb-2">
-                                    <span class="px-2 py-1 text-xs rounded bg-orange-100 text-orange-600">QA</span>
-                                </div>
-                                <h4 class="font-medium text-gray-800 mb-2">Bug Testing</h4>
-                                <p class="text-sm text-gray-600 mb-3">Review and test new features for bugs.</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex -space-x-2">
-                                        <img src="https://picsum.photos/24/24?random=12" alt="Assignee" class="w-6 h-6 rounded-full border-2 border-white">
-                                    </div>
-                                    <div class="flex items-center text-gray-500 text-sm">
-                                        <i class="far fa-comment mr-1"></i>
-                                        <span>4</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                <task-card name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="1"></task-card>
 
-                        <button class="mt-3 w-full p-2 text-gray-600 hover:bg-gray-200 rounded flex items-center justify-center">
-                            <i class="fas fa-plus mr-2"></i>
-                            <span>Add a card</span>
-                        </button>
-                    </div>
+                            </div>
+                           
+                        </div>
+                        
+                       
+                    </bord-list>
+                    <!-- Review List --> 
+                    <bord-list name="Review">
+                        <div class="space-y-3" slot="task-card">
+                            <div class="task-card bg-white p-3 rounded shadow-sm">
+                                <task-card name="Bug Testing" describtion="Review and test new features for bugs." limiteDate="to day" etiquette="6"></task-card>
+
+                            </div>
+                           
+                        </div>
+                        
+                       
+                    </bord-list> 
+                
 
                     <!-- Done List -->
-                    <div class="board-list bg-gray-100 rounded-lg p-3">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="font-semibold text-gray-700">Done</h3>
-                            <button class="p-1.5 hover:bg-gray-200 rounded">
-                                <i class="fas fa-ellipsis-h text-gray-500"></i>
-                            </button>
-                        </div>
+                    <bord-list name="Done">
+                        <div class="space-y-3" slot="task-card">
+                            <div class="task-card bg-white p-3 rounded shadow-sm">
+                                <task-card name="Setup Development Environment" describtion="Configure development tools and environments." limiteDate="to day" etiquette="7"></task-card>
 
-                        <div class="space-y-3">
-                            <div class="task-card bg-white p-3 rounded shadow-sm opacity-75">
-                                <div class="flex space-x-2 mb-2">
-                                    <span class="px-2 py-1 text-xs rounded bg-gray-100 text-gray-600">Completed</span>
-                                </div>
-                                <h4 class="font-medium text-gray-800 mb-2">Setup Development Environment</h4>
-                                <p class="text-sm text-gray-600 mb-3">Configure development tools and environments.</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex -space-x-2">
-                                        <img src="https://picsum.photos/24/24?random=13" alt="Assignee" class="w-6 h-6 rounded-full border-2 border-white">
-                                    </div>
-                                    <div class="flex items-center text-gray-500 text-sm">
-                                        <i class="far fa-comment mr-1"></i>
-                                        <span>1</span>
-                                    </div>
-                                </div>
                             </div>
+                           
                         </div>
+                        
+                       
+                    </bord-list> 
+                    
 
-                        <button class="mt-3 w-full p-2 text-gray-600 hover:bg-gray-200 rounded flex items-center justify-center">
-                            <i class="fas fa-plus mr-2"></i>
-                            <span>Add a card</span>
-                        </button>
-                    </div>
-
-                    <!-- Add List Button -->
-                    <div class="board-list">
-                        <button class="w-full h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center text-gray-600">
+                    <!-- Add List Button 
+                    <div  x-add="true"class="board-list">
+                        <button class="add-list_ w-full h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center text-gray-600">
                             <i class="fas fa-plus mr-2"></i>
                             <span>Add another list</span>
                         </button>
                     </div>
+                    -->
                 </div>
             </div>
         </main>
-    </div>
+        <task-modal slot="modal">
 
-    <!-- Task Detail Modal -->
-    <div class="modal fixed inset-0 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-tasks text-gray-500"></i>
-                        <h2 class="text-xl font-semibold text-gray-800">Design new landing page</h2>
-                    </div>
-                    <button class="p-2 hover:bg-gray-100 rounded">
-                        <i class="fas fa-times text-gray-500"></i>
-                    </button>
-                </div>
+        </task-modal>
+      
+    </layout-principale>
+    
 
-                <div class="grid grid-cols-3 gap-6">
-                    <div class="col-span-2">
-                        <div class="mb-6">
-                            <h3 class="text-sm font-medium text-gray-700 mb-2">Description</h3>
-                            <textarea class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" 
-                                      placeholder="Add a more detailed description..."></textarea>
-                        </div>
+<script src="customElelment.js" type="module"></script>
+<script src="slot.js" type="module"></script> 
+<script>
+    // const addList=document.querySelector(".add-list_");
+    // const addListA=document.querySelector("#addA");
+    // let parentBoardList=document.querySelector('.parent-board-list');
+    // let a=document.createElement('bord-list')
+    // let b=1
+    // a.setAttribute("name",b)
+    // b=b+1
+    // a.innerHTML=`
+    //                     <div class="space-y-3" slot="task-card">
+    //                         <div class="task-card bg-white p-3 rounded shadow-sm">
+    //                             <task-card name="Setup Development Environment" describtion="Configure development tools and environments." limiteDate="to day" etiquette="7"></task-card>
 
-                        <div class="mb-6">
-                            <h3 class="text-sm font-medium text-gray-700 mb-2">Activity</h3>
-                            <div class="space-y-4">
-                                <div class="flex space-x-3">
-                                    <img src="https://picsum.photos/32/32?random=14" alt="User" class="w-8 h-8 rounded-full">
-                                    <div>
-                                        <p class="text-sm">
-                                            <span class="font-medium text-gray-800">John Doe</span>
-                                            <span class="text-gray-600">added this card to To Do</span>
-                                        </p>
-                                        <span class="text-xs text-gray-500">2 hours ago</span>
-                                    </div>
-                                </div>
+    //                         </div>
+                           
+    //                     </div>
+                        
+                       
+    //                 `
+    // addList.addEventListener('click',()=>{
+    //     document.querySelectorAll('bord-list').forEach(element => {
+            
+    //         if(element.nextElementSibling.getAttribute("x-add"))
+    //         {
+    //             element.nextSibling.replaceWith(a)
+    //             console.log(element.nextSibling)
+             
+    //         }
+    //     });
 
-                                <div class="flex space-x-3">
-                                    <img src="https://picsum.photos/32/32?random=15" alt="User" class="w-8 h-8 rounded-full">
-                                    <div>
-                                        <p class="text-sm">
-                                            <span class="font-medium text-gray-800">Jane Smith</span>
-                                            <span class="text-gray-600">added the Design label</span>
-                                        </p>
-                                        <span class="text-xs text-gray-500">1 hour ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    // })
+    // addListA.addEventListener('click',()=>{
+    //     document.querySelectorAll('bord-list').forEach(element => {
+            
+    //         if(element.nextElementSibling.getAttribute("x-add"))
+    //         {
+    //             element.nextSibling.replaceWith(a)
+    //             console.log(element.nextSibling)
+             
+    //         }
+    //     });
 
-                    <div>
-                        <div class="mb-6">
-                            <h3 class="text-sm font-medium text-gray-700 mb-2">Add to card</h3>
-                            <div class="space-y-2">
-                                <button class="w-full p-2 text-left text-gray-600 hover:bg-gray-100 rounded flex items-center">
-                                    <i class="fas fa-user mr-2"></i>
-                                    <span>Members</span>
-                                </button>
-                                <button class="w-full p-2 text-left text-gray-600 hover:bg-gray-100 rounded flex items-center">
-                                    <i class="fas fa-tag mr-2"></i>
-                                    <span>Labels</span>
-                                </button>
-                                <button class="w-full p-2 text-left text-gray-600 hover:bg-gray-100 rounded flex items-center">
-                                    <i class="fas fa-check-square mr-2"></i>
-                                    <span>Checklist</span>
-                                </button>
-                                <button class="w-full p-2 text-left text-gray-600 hover:bg-gray-100 rounded flex items-center">
-                                    <i class="fas fa-calendar mr-2"></i>
-                                    <span>Due Date</span>
-                                </button>
-                            </div>
-                        </div>
+    // })
+    const side =document.querySelector("side-bar")
+    console.log(side)
+    side.onclick=()=>this.updateProject({
+            name:"Pro",
+            id:"2",
+            imageCategory:` <i class="fas fa-project-diagram text-green-600"></i>`
+        },
+        document.querySelector("#project-list")
+    )
+</script>
 
-                        <div class="mb-6">
-                            <h3 class="text-sm font-medium text-gray-700 mb-2">Actions</h3>
-                            <div class="space-y-2">
-                                <button class="w-full p-2 text-left text-gray-600 hover:bg-gray-100 rounded flex items-center">
-                                    <i class="fas fa-arrow-right mr-2"></i>
-                                    <span>Move</span>
-                                </button>
-                                <button class="w-full p-2 text-left text-gray-600 hover:bg-gray-100 rounded flex items-center">
-                                    <i class="fas fa-copy mr-2"></i>
-                                    <span>Copy</span>
-                                </button>
-                                <button class="w-full p-2 text-left text-red-600 hover:bg-red-50 rounded flex items-center">
-                                    <i class="fas fa-trash-alt mr-2"></i>
-                                    <span>Delete</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
 </html>
