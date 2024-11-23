@@ -117,7 +117,6 @@
     </layout-principale>
     
 
-<script src="customElelment.js" type="module"></script>
 <script src="slot.js" type="module"></script> 
 <script>
     // const addList=document.querySelector(".add-list_");
@@ -162,15 +161,26 @@
     //     });
 
     // })
-    const side =document.querySelector("side-bar")
-    console.log(side)
-    side.onclick=()=>this.updateProject({
-            name:"Pro",
-            id:"2",
-            imageCategory:` <i class="fas fa-project-diagram text-green-600"></i>`
-        },
-        document.querySelector("#project-list")
-    )
+    document.querySelector("body").onclick=()=>{
+
+        const event = new CustomEvent('updateElement-Project', {
+                detail: 
+            {
+                name:" Alpha",
+                id:"1",
+                imageCategory:` <i class="fas fa-project-diagram text-blue-600"></i>`
+            }
+                
+                ,
+                bubbles: true,
+                composed: true,
+                
+            });
+            document.querySelector("side-bar").dispatchEvent(event);
+            
+    } 
+
 </script>
 
+<script src="customElelment.js" type="module"></script>
 </html>

@@ -50,7 +50,9 @@ export class Boardlist extends HTMLElement{
     }
     connectedCallback(){
         this.addTask()
+       
     }
+    
 
     addTask(){
         const addBoard=this.shadowRoot.querySelector("#add");

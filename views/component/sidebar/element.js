@@ -37,18 +37,23 @@ export class Sidebar extends HTMLElement{
                 </div>
             </div>
         </aside>
-`;
+`; 
+this.projectList=this.querySelector("#project-list");
 
-   
-       
-     
+
+}
+static eventToAdd={
+
+    'createElement-Project':'createElementForProject',
+    'removeElement-Project':'removeElementProject',
+    'updateElement-Project':'updateElementProject',
 }
 
 
-
     connectedCallback(){
-        let projectList=this.querySelector("#project-list");
-        this.setProjects(projectList,[
+
+
+        this.setProjects(this.projectList,[
             {
                 name:"Project Alpha",
                 id:"1",
@@ -66,17 +71,27 @@ export class Sidebar extends HTMLElement{
             }
 
         ])
-    //     this.onclick=()=>this.updateProject({
-    //         name:"Pro",
-    //         id:"2",
-    //         imageCategory:` <i class="fas fa-project-diagram text-green-600"></i>`
-    //     },
-    //     projectList
-    // )
+        this.Listener()
+
+    }
+
+    Listener()//permet de faire correpondre chaque ecouteur à sa fonction
+    {
+
+        Object.keys(Sidebar.eventToAdd).forEach(e => {
+
+            const methodeName=Sidebar.eventToAdd[e]//recuperation du nom dela methode a executer
+            this.addEventListener(e, (event) => {
+               typeof this[methodeName] == 'function'?this[methodeName](event):console.warn( methodeName+' is not a function of this class')
+
+          });  
+            
+          });
     }
 
     createElementProject( id,name='Project',imageCategory=`<i class="fas fa-code text-purple-600"></i>`){
-
+      
+        // creatiion d'un element visuel du projet dans la sidebar
         let content =document.createElement("a");
         content.setAttribute("href","");
         content.setAttribute("number",id)
@@ -87,9 +102,11 @@ export class Sidebar extends HTMLElement{
                             <span class="text-gray-700">${name}</span>
         `
         return content;
+
     }
 
-    setProjetct(element,id,name,imageCategory){
+    setProject(element=this.projectList,id,name,imageCategory){
+        //ajoute un projet dans la liste visuel des projets de la sidebar
        
         const content=this.createElementProject(id,name,imageCategory)
         element.appendChild(content)
@@ -99,24 +116,35 @@ export class Sidebar extends HTMLElement{
     }
 
     
-
-    setProjects(element,projects){
+    setProjects(element=this.projectList,projects){
+         //ajoute plusieurs projets dans la liste visuel des projets de la sidebar
          projects.forEach(e => {
-            this.setProjetct(element,e.id,e.name,e.imageCategory)
+            this.setProject(element,e.id,e.name,e.imageCategory)
          });
     }
 
-    removeProject(id,element){
-        const toRemove=element.querySelector("[number|='"+id+"']")
-        element.removeChild(toRemove)
+    removeProject(id){
+        //supprime un projet dans la liste visuel des projets de la sidebar
+        const toRemove=this.projectList.querySelector("[number|='"+id+"']")
+        this.projectList.removeChild(toRemove)
     }
     
-    updateProject(newdDatas,element){
-        const toUpdate=element.querySelector("[number|='"+newdDatas.id+"']");
+    updateProject(newdDatas){
+        //modifie un projet dans la liste visuel des projets de la sidebar
+        const toUpdate=this.projectList.querySelector("[number|='"+newdDatas.id+"']");
         const newElement=this.createElementProject(newdDatas.id,newdDatas.name,newdDatas.imageCategory);
-        element.replaceChild(newElement,toUpdate);
-        
-        
+        this.projectList.replaceChild(newElement,toUpdate);
 
     }
+    createElementForProject(datas){
+        this.setProject (this.projectList,datas.detail.id,datas.detail.name,datas.detail.imageCategory)
+    }
+
+    removeElementProject(datas){
+        this.removeProject(datas.detail.id)
+    }
+    updateElementProject(datas){
+        this.updateProject(datas.detail)
+    }
+    
 }
