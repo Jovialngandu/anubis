@@ -16,7 +16,7 @@
     <script src="../public/assets/js/flowbite.min.js"></script>
     <script src="../public/assets/js/fontawesome.min.js"></script> 
    
-    <!-- <script src="../renderer.js"></script> -->
+    
     
 </head>
     
@@ -28,7 +28,7 @@
 
         </side-bar>
        
-        <main class="flex-1 overflow-x-auto" slot="main">
+        <main class="flex-1 overflow-x-auto " slot="main">
             <div class="p-6">
                 <!-- Board Header -->
                 <secondheader-element >
@@ -37,7 +37,7 @@
                
                
                 <!-- Board Lists -->
-                <div class="flex space-x-4  parent-board-list">
+                <div class="flex space-x-4  parent-board-list ">
                     
                     <!-- To Do List -->
                     <bord-list name="To Do">
@@ -116,7 +116,7 @@
       
     </layout-principale>
     
-
+ <p id="info"></p>
 <script src="slot.js" type="module"></script> 
 <script>
     // const addList=document.querySelector(".add-list_");
@@ -161,30 +161,31 @@
     //     });
 
     // })
-    document.querySelector("body").onclick=()=>{
+    // document.querySelector("body").onclick=()=>{
 
-        const event = new CustomEvent('RemoveTaskElement-Project', {
-            detail: 
-            {
-                id:1
-                // name:" Anubis js",
-                // describtion:" competitor analysis and user surveys.",
-                // limiteDate:'to moroy',
-                // numberOffAtache:'12',
-                // etiquette:["3","4"]
+    //     const event = new CustomEvent('RemoveTaskElement-Project', {
+    //         detail: 
+    //         {
+    //             id:1
+    //             // name:" Anubis js",
+    //             // describtion:" competitor analysis and user surveys.",
+    //             // limiteDate:'to moroy',
+    //             // numberOffAtache:'12',
+    //             // etiquette:["3","4"]
               
-            }
+    //         }
                 
-                ,
-                bubbles: true,
-                composed: true,
+    //             ,
+    //             bubbles: true,
+    //             composed: true,
                 
-            });
-            document.querySelector("bord-list").dispatchEvent(event);
+    //         });
+    //         document.querySelector("bord-list").dispatchEvent(event);
             
-    } 
+    // } 
 
 </script>
 
 <script src="customElelment.js" type="module"></script>
+<script src="../renderer/index.js"></script>
 </html>

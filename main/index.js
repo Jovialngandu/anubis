@@ -1,14 +1,18 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main')
-const path = require('node:path')
+const path = require('node:path');
+
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload/index.js')
-    }
-    
+    width: 1500,
+    height: 1000,
+    autoHideMenuBar:true,
+    webPreferences: 
+    {
+      preload: path.join(__dirname, '../preload/index.js')
+    },
+
+    // frame:false
 
   })
 
@@ -17,7 +21,9 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-  ipcMain.handle('ping', () => 'pong')
+ 
+  ipcMain.handle('ping', () => 'Anubis');
+  
   createWindow()
 
 

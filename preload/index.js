@@ -7,3 +7,4 @@ contextBridge.exposeInMainWorld('versions', {
   ping: () => ipcRenderer.invoke('ping')
   // nous pouvons aussi exposer des variables en plus des fonctions
 })
+
