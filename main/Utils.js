@@ -1,0 +1,1 @@
+//fonctionalité utilitaire
