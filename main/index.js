@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main')
 const path = require('node:path');
-
+const db  = require('../database/database');
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -20,19 +20,17 @@ const createWindow = () => {
   win.loadFile('views/index.html')
    // Open the DevTools.
    win.webContents.openDevTools()
+   
 }
 
-app.whenReady().then(() => {
- 
-  ipcMain.handle('ping', () => 'Anubis');
-  
-  createWindow()
+app.whenReady().then(() => { 
 
+  createWindow()
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
-      
+     
     }
   })
 })
