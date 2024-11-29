@@ -36,7 +36,7 @@ function runQuery(query, params = [], options = {}) {//utiliser pour des requett
         });
   
        stmt.finalize();
-        resolve(); // Retourner des informations supplémentaires
+        resolve('query ok'); // Retourner des informations supplémentaires
       } catch (error) {
         reject(error);
       } 

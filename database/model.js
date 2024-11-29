@@ -22,23 +22,24 @@ class Model {
 
     async insert(data,more=false) {//le parametre more nous indique si on fait plusoeurs insertion ou pas
       
+        let columns ,placeholders ,values ;
         if (!more){//si on doit en inserer qu'un seul
 
-            const columns = Object.keys(data).join(', ');//le nom des attributs jouerons les clés 
-            const placeholders = Object.keys(data).map(() => '?').join(', ');//pour chaque attreibut on met un ? pour la requete preparer          
-            const values =  Array(Object.values(data))
+            columns = Object.keys(data).join(', ');//le nom des attributs jouerons les clés 
+            placeholders = Object.keys(data).map(() => '?').join(', ');//pour chaque attreibut on met un ? pour la requete preparer          
+            values =  Array(Object.values(data))
             //cad que la syntaxe du data est ex: data={name:"john",firstname:"doe"}
             // on le converti en tableau pour respecter le format d'insertion pour la prepare
         }
-        else
-        {
-            const columns=data[0].join(', ');
-            const placeholders=data[0].map(() => '?').join(', ');
-            const values=data[1]
+        else {
+            columns=data[0].join(', ');
+            placeholders=data[0].map(() => '?').join(', ');
+            values=data[1]
             //cad que la syntaxe est:data={ 0:['name','firstname'],1: [ ['jvl','sss'],['sarah','conor'],['hola',''], ] }
         }
        
         const query = `INSERT INTO ${this.tableName} (${columns}) VALUES (${placeholders})`;
+        
         // const result = await runQuery(query, values);//ceci est pour les nom preparer
         const result=await runPrepare(query,values);
 
@@ -49,14 +50,18 @@ class Model {
 
     async findAll() {
         const query = `SELECT * FROM ${this.tableName}`;
-        return await runQuery(query,[],{methode:'all'});
+        const datas= await runQuery(query,[],{method:'all'});    
+        return datas
+        
+
+  
     }
     
     
     async findById(id) {
         const query = `SELECT * FROM ${this.tableName} WHERE id = ?`;
-        const rows = await runQuery(query, [id],{methode:'all'});
-        return rows[0] || null;
+        const rows = await runQuery(query, [id],{method:'all'});
+        return rows.result[0] || null;
     }
     
 }
