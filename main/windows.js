@@ -17,7 +17,7 @@ function createWindow(){
     win.loadFile('views/index.html')
      // Open the DevTools.
     // win.webContents.openDevTools()
-     
+     return win
   }
 
 module.exports = createWindow

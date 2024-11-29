@@ -8,3 +8,4 @@ const func = async () => {
   func()
   // alert(info)
   
+  window.versions.pa()
