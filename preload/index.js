@@ -4,13 +4,27 @@ contextBridge.exposeInMainWorld('versions', {
   node: () => process.versions.node,
   chrome: () => process.versions.chrome,
   electron: () => process.versions.electron,
-  ping: () => ipcRenderer.invoke('ping'),
-  pa: () => {
-    // ipcRenderer.invoke('ping')
-    // ipcRenderer.send('yo','yep') 
+  appReqdy: () => {
     ipcRenderer.on('app:ready',()=>console.log('app ready'))
-  }
-  
-  // nous pouvons aussi exposer des variables en plus des fonctions
-})
+  },
+}
 
+);
+
+
+
+contextBridge.exposeInMainWorld('api',{
+  invoke:(channel,args)=>ipcRenderer.invoke(channel,args),
+  send:(channel,args)=>ipcRenderer.send(channel,args),
+  on:(channel,callback)=> 
+    ipcRenderer.on(channel,(event,...args)=>
+    callback(...args)),
+
+    
+});
+
+
+
+
+
+  
