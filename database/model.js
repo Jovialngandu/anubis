@@ -9,7 +9,6 @@ class Model {
       this.constraint=constraint;
     }
     
-
     async createTable() {
         const columns = Object.entries(this.schema)//transforme l'objet en tableau avec chaque entré comme tableau de 2 element (le nom de l'attribut et ses contraintes)
           .map(([name, type]) => `${name} ${type}`)//ceci va retourner un tableau qui va concatener le nom de l'attribut et ses contrainte ou type
@@ -20,7 +19,6 @@ class Model {
         console.log(`Table "${this.tableName}" CREATE.`);
     }
     
-
     async insert(data,more=false) {//le parametre more nous indique si on fait plusoeurs insertion ou pas
         
         let columns ,placeholders ,values ;
@@ -45,13 +43,11 @@ class Model {
         return result;
     }
     
-
     async findAll() {
         const query = `SELECT * FROM ${this.tableName}`;
         const datas= await runQuery(query,[],{method:'all'});    
         return datas
-    }
-    
+    }    
     
     async findById(id) {
         const query = `SELECT * FROM ${this.tableName} WHERE id = ?`;
@@ -66,7 +62,17 @@ class Model {
         
         return rows.result || null;
 
+    }
 
+    async findFirst(){
+        const query = `SELECT * FROM ${this.tableName}`;
+        const rows = await runQuery(query, [],{method:'all'});     
+        return rows.result[0] || null;
+    }
+
+    async findLast(){
+        const datas=await  this.findAll()
+        return datas.result[datas.result.length-1]
     }
 }
 module.exports = Model;
