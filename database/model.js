@@ -16,9 +16,8 @@ class Model {
           .join(', ');
     
         const query = `CREATE TABLE IF NOT EXISTS ${this.tableName} (${columns} ${this.constraint})`;
-        console.log(query)
         await runQuery(query);
-        console.log(`Table "${this.tableName}" créée.`);
+        console.log(`Table "${this.tableName}" CREATE.`);
     }
     
 
