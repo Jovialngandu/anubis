@@ -3,9 +3,10 @@ const { runPrepare ,runQuery} = require('./database');
 
 class Model {
 
-    constructor(tableName, schema) {
+    constructor(tableName, schema,constraint='') {
       this.tableName = tableName;
       this.schema = schema;
+      this.constraint=constraint;
     }
     
 
@@ -14,7 +15,8 @@ class Model {
           .map(([name, type]) => `${name} ${type}`)//ceci va retourner un tableau qui va concatener le nom de l'attribut et ses contrainte ou type
           .join(', ');
     
-        const query = `CREATE TABLE IF NOT EXISTS ${this.tableName} (${columns})`;
+        const query = `CREATE TABLE IF NOT EXISTS ${this.tableName} (${columns} ${this.constraint})`;
+        console.log(query)
         await runQuery(query);
         console.log(`Table "${this.tableName}" créée.`);
     }

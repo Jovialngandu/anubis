@@ -5,11 +5,15 @@ const db = new sql.Database('./database.db', (err) => {
     if (err) {
         console.error(err.message);
     }
-    console.log('Connected to the database.');
+    else{
+      db.run('PRAGMA foreign_keys=ON;');
+      console.log('Connected to the database.');
+    }
+    
 });
 
 //Activaion du concept des cles etrangers
-db.run('PRAGMA foreign_keys=ON;');
+
 
 function runQuery(query, params = [], options = {}) {//utiliser pour des requettes simple 
     return new Promise((resolve, reject) => {

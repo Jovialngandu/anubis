@@ -1,3 +1,5 @@
+Model=require('../../database/model')
+
 class Project extends Model {
     constructor() {
       super('project', {
