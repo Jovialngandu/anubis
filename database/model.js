@@ -56,8 +56,17 @@ class Model {
     async findById(id) {
         const query = `SELECT * FROM ${this.tableName} WHERE id = ?`;
         const rows = await runQuery(query, [id],{method:'all'});
+        
         return rows.result[0] || null;
     }
     
+    async findWhere(value,attribute='id'){
+        const query = `SELECT * FROM ${this.tableName} WHERE ${attribute}= ?`;
+        const rows = await runQuery(query, [value],{method:'all'});
+        
+        return rows.result || null;
+
+
+    }
 }
 module.exports = Model;
