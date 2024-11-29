@@ -7,16 +7,20 @@ function createWindow(){
       width: 1500,
       height: 1000,
       autoHideMenuBar:true,
+      contextIsolation:true,
+      enableRemoteModule:false,
+      nodeIntegration:false,//desactivation de l'acces direct à node dans le renderer
       webPreferences: 
       {
         preload: path.join(__dirname, '../preload/index.js')
       },
+     
       // frame:false  
     })
   
     win.loadFile('views/index.html')
      // Open the DevTools.
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools()
      return win
   }
 

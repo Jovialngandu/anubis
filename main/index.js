@@ -1,13 +1,14 @@
 const { app } = require('electron/main')
-// const db  = require('../database/database');
 const createWindow = require('./windows')
 const setupIpcListeners = require('./ipcListeners')
 const setupIpcEmitters = require('./ipcEmitters')
+const initDatas=require('./Utils').initDatas
 let mainWin;
 
-app.whenReady().then(() => { 
+app.whenReady().then(async() => { 
 
-  mainWin=createWindow()  //recuperation de la fenetre principale
+  initDatas()
+  mainWin= await createWindow()  //recuperation de la fenetre principale
   setupIpcEmitters(mainWin) //configuration des emetteurs
   setupIpcListeners(mainWin)  //configuration des ecouteurs
 
