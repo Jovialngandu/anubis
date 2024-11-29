@@ -8,6 +8,9 @@ const db = new sql.Database('./database.db', (err) => {
     console.log('Connected to the database.');
 });
 
+//Activaion du concept des cles etrangers
+db.run('PRAGMA foreign_keys=ON;');
+
 function runQuery(query, params = [], options = {}) {//utiliser pour des requettes simple 
     return new Promise((resolve, reject) => {
       const method = options.method || 'run'; // Méthode par défaut : run
