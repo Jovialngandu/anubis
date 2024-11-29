@@ -2,7 +2,7 @@ Model=require('../../database/model')
 
 class List extends Model {
     constructor() {
-      super('note', {
+      super('list', {
         id: 'INTEGER PRIMARY KEY AUTOINCREMENT',
         name: 'TEXT NOT NULL',
         describtion: 'TEXTE ',
