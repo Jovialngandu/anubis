@@ -16,14 +16,14 @@ window.addEventListener('DOMContentLoaded',
 window.addEventListener('click',
     async()=>{
         try{
-            const data= await window.api.invoke('Note:insert',[{title:'note12',content:'hell'}]);
+            const data= await window.api.invoke('Note:findAll');
             if(data){
                 console.log(data);
             }else {
                 console.error('no data')
             }
         }catch(error){
-            console.error('error v',error)
+            console.error('error',error)
         }
         
     }

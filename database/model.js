@@ -74,5 +74,26 @@ class Model {
         const datas=await  this.findAll()
         return datas.result[datas.result.length-1]
     }
+
+    async deleteById(id){
+        const query=`DELETE FROM ${this.tableName} WHERE id=${id}`
+        try{
+            await runQuery(query, [],{method:'run'}); 
+            return  {'message':'deleted succefully'}
+        }catch(error){
+            return  {'error':error}
+        }
+    }
+
+    async deleteWhere(value,attribute='id'){
+         const query=`DELETE FROM ${this.tableName} WHERE ${attribute}=${value}`
+         try{
+            await runQuery(query, [],{method:'run'}); 
+            return  {'message':'deleted succefully'}
+        }catch(error){
+            return  {'error':error}
+        }
+
+    }
 }
 module.exports = Model;
