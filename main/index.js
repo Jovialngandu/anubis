@@ -1,27 +1,6 @@
-const { app, BrowserWindow, ipcMain } = require('electron/main')
-const path = require('node:path');
+const { app } = require('electron/main')
 const db  = require('../database/database');
-
-const createWindow = () => {
-  const win = new BrowserWindow({
-    width: 1500,
-    height: 1000,
-    autoHideMenuBar:true,
-    webPreferences: 
-    {
-      preload: path.join(__dirname, '../preload/index.js')
-    },
-
-    // frame:false
-
-  })
-
-
-  win.loadFile('views/index.html')
-   // Open the DevTools.
-   win.webContents.openDevTools()
-   
-}
+const createWindow = require('./windows')
 
 app.whenReady().then(() => { 
 

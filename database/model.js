@@ -7,7 +7,7 @@ class Model {
       this.tableName = tableName;
       this.schema = schema;
     }
-
+    
 
     async createTable() {
         const columns = Object.entries(this.schema)//transforme l'objet en tableau avec chaque entré comme tableau de 2 element (le nom de l'attribut et ses contraintes)
@@ -21,7 +21,7 @@ class Model {
     
 
     async insert(data,more=false) {//le parametre more nous indique si on fait plusoeurs insertion ou pas
-      
+        
         let columns ,placeholders ,values ;
         if (!more){//si on doit en inserer qu'un seul
 
@@ -37,13 +37,10 @@ class Model {
             values=data[1]
             //cad que la syntaxe est:data={ 0:['name','firstname'],1: [ ['jvl','sss'],['sarah','conor'],['hola',''], ] }
         }
-       
-        const query = `INSERT INTO ${this.tableName} (${columns}) VALUES (${placeholders})`;
         
+        const query = `INSERT INTO ${this.tableName} (${columns}) VALUES (${placeholders})`;    
         // const result = await runQuery(query, values);//ceci est pour les nom preparer
-        const result=await runPrepare(query,values);
-
-     
+        const result=await runPrepare(query,values); 
         return result;
     }
     
@@ -52,9 +49,6 @@ class Model {
         const query = `SELECT * FROM ${this.tableName}`;
         const datas= await runQuery(query,[],{method:'all'});    
         return datas
-        
-
-  
     }
     
     

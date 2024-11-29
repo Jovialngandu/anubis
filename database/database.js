@@ -32,10 +32,10 @@ function runQuery(query, params = [], options = {}) {//utiliser pour des requett
   
         params.forEach(element => {
           stmt.run(element);
-         
+          
         });
   
-       stmt.finalize();
+      stmt.finalize();
         resolve('query ok'); // Retourner des informations supplémentaires
       } catch (error) {
         reject(error);
