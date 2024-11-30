@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded',
 window.addEventListener('click',
     async()=>{
         try{
-            const data= await window.api.invoke('Note:findAll');
+            const data= await window.api.invoke('Note:UpdateById',[{title: 'jdd', content: 'd'},7]);
             if(data){
                 console.log(data);
             }else {

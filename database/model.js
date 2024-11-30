@@ -95,5 +95,16 @@ class Model {
         }
 
     }
+
+    async UpdateById(data,id){
+        let params=Object.keys(data).map((e)=>e+'= ?').join(',');
+        let values=Object.values(data);
+        values.push(id);
+        const query=` UPDATE ${this.tableName} SET ${params} WHERE id=?`
+        const result=await runPrepare(query,Array(values));        
+        return result;
+    }
+
 }
+
 module.exports = Model;
