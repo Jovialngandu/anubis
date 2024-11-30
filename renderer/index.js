@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded',
 window.addEventListener('click',
     async()=>{
         try{
-            const data= await window.api.invoke('Note:UpdateById',[{title: 'jdd', content: 'd'},7]);
+            const data= await window.api.invoke('Note:UpdateWhere',[{title: 'a', content: 'b'},'jdd','title']);
             if(data){
                 console.log(data);
             }else {

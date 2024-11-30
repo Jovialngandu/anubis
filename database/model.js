@@ -105,6 +105,16 @@ class Model {
         return result;
     }
 
+    async UpdateWhere(data,value,attribute='id'){
+        let params=Object.keys(data).map((e)=>e+'= ?').join(',');
+        let values=Object.values(data);
+        values.push(value);
+        const query=` UPDATE ${this.tableName} SET ${params} WHERE ${attribute}=?`
+        const result=await runPrepare(query,Array(values));        
+        return result;
+
+    }
+
 }
 
 module.exports = Model;
