@@ -14,5 +14,11 @@ export class SecondHeaderElement extends HTMLElement{
     constructor() {
         super();
         this.innerHTML=second_content;
+       document.querySelector('.project_name').innerHTML=this.getAttribute('project_name');
+    }
+
+    changeProjectName(project_name)
+    {
+        document.querySelector('.project_name').innerHTML=project_name;
     }
 }

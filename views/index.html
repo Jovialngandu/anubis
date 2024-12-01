@@ -3,119 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title >_</title>
-   
+    <title >_</title> 
     <!-- <link href="../public/assets/css/all.min.css" rel="stylesheet"> -->
     <link href="../public/assets/css/style.css" rel="stylesheet">
     <link href="../public/assets/css/flowbite.min-2.2.1.css" rel="stylesheet">
     <script src="customElelment.js"></script>
     <script src="../public/assets/js/tw3.4.js"></script>
-   
-
     <script src="../public/assets/js/all.min.js"></script>
     <script src="../public/assets/js/flowbite.min.js"></script>
-    <script src="../public/assets/js/fontawesome.min.js"></script> 
-   
-    
-    
-</head>
-    
+    <script src="../public/assets/js/fontawesome.min.js"></script>   
+</head>  
     <layout-principale>
         <header-element slot="header-element">
-
         </header-element>
         <side-bar slot="side-bar">
-
-        </side-bar>
-       
-        <main class="flex-1 overflow-x-auto " slot="main">
+        </side-bar> 
+        <main class="flex-1 overflow-x-auto main_" slot="main">
             <div class="p-6">
                 <!-- Board Header -->
-                <secondheader-element >
-                    
-                </secondheader-element>
-               
-               
+                <secondheader-element project_name="">              
+                </secondheader-element>   
                 <!-- Board Lists -->
-                <div class="flex space-x-4  parent-board-list ">
-                    
+                <div class="flex space-x-4  parent-board-list ">           
                     <!-- To Do List -->
-                    <bord-list name="To Do">
-                        <div class="space-y-3" slot="task-card">
-                            <div class="task-card bg-white p-3 rounded shadow-sm" >
-                                <task-card taskNumber="1"name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="2"></task-card>
-    
-                            </div>
-                            <div class="task-card bg-white p-3 rounded shadow-sm" >
-                                <task-card taskNumber="2" name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="3"></task-card>
-    
-                            </div>
-                        </div>
-                        
-                       
-                    </bord-list>
-
                     <!-- In Progress List -->
-                    <bord-list name="In Progress">
-                        <div class="space-y-3" slot="task-card">
-                            <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <task-card  taskNumber="3" name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="5"></task-card>
-
-                            </div>
-                            <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <task-card  taskNumber="4" name="Market Research" describtion="Conduct competitor analysis and user surveys." limiteDate="to day" etiquette="1"></task-card>
-
-                            </div>
-                           
-                        </div>
-                        
-                       
-                    </bord-list>
                     <!-- Review List --> 
-                    <bord-list name="Review">
-                        <div class="space-y-3" slot="task-card">
-                            <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <task-card taskNumber="5"  name="Bug Testing" describtion="Review and test new features for bugs." limiteDate="to day" etiquette="6"></task-card>
-
-                            </div>
-                           
-                        </div>
-                        
-                       
-                    </bord-list> 
-                
-
                     <!-- Done List -->
-                    <bord-list name="Done">
-                        <div class="space-y-3" slot="task-card">
-                            <div class="task-card bg-white p-3 rounded shadow-sm">
-                                <task-card taskNumber="6" name="Setup Development Environment" describtion="Configure development tools and environments." limiteDate="to day" etiquette="7"></task-card>
-
-                            </div>
-                           
-                        </div>
-                        
-                       
-                    </bord-list> 
-                    
-
-                    <!-- Add List Button 
-                    <div  x-add="true"class="board-list">
-                        <button class="add-list_ w-full h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center text-gray-600">
-                            <i class="fas fa-plus mr-2"></i>
-                            <span>Add another list</span>
-                        </button>
-                    </div>
-                    -->
+                    <!-- Add List Button-->
                 </div>
             </div>
         </main>
         <task-modal slot="modal">
-
-        </task-modal>
-      
-    </layout-principale>
-    
+        </task-modal>  
+    </layout-principale>   
  <p id="info"></p>
 <script src="slot.js" type="module"></script> 
 <script>
@@ -188,4 +108,5 @@
 
 <script src="customElelment.js" type="module"></script>
 <script src="../renderer/index.js"></script>
+<script src="../renderer/projectRenderer.js"></script>
 </html>

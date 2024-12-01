@@ -41,7 +41,7 @@ export const content_header=` <nav class="bg-white border-b border-gray-200 fixe
 
 export const second_content=`<div class=" mb-6 flex items-center justify-between">
                     <div class="flex items-center space-x-4">
-                        <h1 class="text-2xl font-bold text-gray-800">Project Alpha</h1>
+                        <h1 class="text-2xl font-bold text-gray-800 project_name"></h1>
                         <button class="p-2 hover:bg-gray-100 rounded">
                             <i class="far fa-star text-gray-400"></i>
                         </button>

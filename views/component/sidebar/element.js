@@ -50,28 +50,12 @@ static eventToAdd={
 }
 
 
-    connectedCallback(){
+    async connectedCallback(){
 
-
-        this.setProjects(this.projectList,[
-            {
-                name:"Project Alpha",
-                id:"1",
-                imageCategory:` <i class="fas fa-project-diagram text-blue-600"></i>`
-            },
-            {
-                name:"Marketing",
-                id:"2",
-                imageCategory:` <i class="fas fa-tasks text-green-600"></i>`
-            },
-            {
-                name:"Development",
-                id:"3",
-                imageCategory:` <i class="fas fa-code text-purple-600"></i>`
-            }
-
-        ])
         this.Listener()
+        const project=await this.getProject()
+        this.setProjects(this.projectList,project)
+        
 
     }
 
@@ -89,7 +73,7 @@ static eventToAdd={
           });
     }
 
-    createElementProject( id,name='Project',imageCategory=`<i class="fas fa-code text-purple-600"></i>`){
+    createElementProject( id,name='Project',ImageCategory=`<i class="fas fa-code text-purple-600"></i>`){
       
         // creatiion d'un element visuel du projet dans la sidebar
         let content =document.createElement("a");
@@ -97,7 +81,7 @@ static eventToAdd={
         content.setAttribute("number",id)
         content.classList="flex items-center space-x-2 p-2 rounded hover:bg-gray-200"
         content.innerHTML=` <div class="w-8 h-8 bg-purple-100 rounded flex items-center justify-center">
-                               ${imageCategory}
+                               ${ImageCategory}
                             </div>
                             <span class="text-gray-700">${name}</span>
         `
@@ -105,10 +89,10 @@ static eventToAdd={
 
     }
 
-    setProject(element=this.projectList,id,name,imageCategory){
+    setProject(element=this.projectList,id,name,ImageCategory){
         //ajoute un projet dans la liste visuel des projets de la sidebar
        
-        const content=this.createElementProject(id,name,imageCategory)
+        const content=this.createElementProject(id,name,ImageCategory)
         element.appendChild(content)
 
         //use case  this.setProjetct(projectList,1) dans connected
@@ -119,7 +103,7 @@ static eventToAdd={
     setProjects(element=this.projectList,projects){
          //ajoute plusieurs projets dans la liste visuel des projets de la sidebar
          projects.forEach(e => {
-            this.setProject(element,e.id,e.name,e.imageCategory)
+            this.setProject(element,e.id,e.name,e.ImageCategory)
          });
     }
 
@@ -137,7 +121,7 @@ static eventToAdd={
 
     }
     createElementForProject(datas){
-        this.setProject (this.projectList,datas.detail.id,datas.detail.name,datas.detail.imageCategory)
+        this.setProject (this.projectList,datas.detail.id,datas.detail.name,datas.detail.ImageCategory)
     }
 
     removeElementProject(datas){
@@ -145,6 +129,11 @@ static eventToAdd={
     }
     updateElementProject(datas){
         this.updateProject(datas.detail)
+    }
+
+    async getProject(){
+        const project= await window.api.invoke('Project:findAll')
+        return project.result
     }
     
 }
