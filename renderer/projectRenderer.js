@@ -28,16 +28,29 @@ async function load() {
         tasks=await Promise.all(promisesTask)
         // console.log('Task',tasks)
         //les etiquettes de chaque task
-        promisesEtiquette_task=tasks.map(async(task)=>{//on recupere d'abord les element de la table intermedaire ensuite on recupere celui de la table concerné
-            // console.log(task)
-            const result= await window.api.invoke('Etiquette_Task:findWhere',[task[0].id,'task_id'])
-            return result
+        tableAllTask=Array()
+        tasks.map(task=>{
+            for (index = 0; index < task.length; index++) {
+                tableAllTask.push(task[index])
+            }
         })
+        promisesEtiquette_task=tableAllTask.map(async(task)=>{//on recupere d'abord les element de la table intermedaire ensuite on recupere celui de la table concerné
+
+            for (index = 0; index < tableAllTask.length; index++) {
+                result= await window.api.invoke('Etiquette_Task:findWhere',[tableAllTask[index].id,'task_id'])   
+            }
+            return result 
+            
+        })
+        // console.log('tabletask',tableAllTask)
 
         etiquette_tasks=await Promise.all(promisesEtiquette_task)
         // console.log('etiquette_task',etiquette_tasks)
+
         promisesEtiquette=etiquette_tasks.map(async(etiquette_task)=>{
+            
             const result= await window.api.invoke('Etiquette:findById',[etiquette_task[0].etiquette_id])
+            result.info=etiquette_task[0];
             return result
         })
         
@@ -50,7 +63,7 @@ async function load() {
         secondheader=main.querySelector('secondheader-element')
         secondheader.setAttribute('project_name',project.name)
         secondheader.changeProjectName(project.name)//changement du titre du projet d   ns le visuel
-        console.log(project.name)
+        // console.log(project.name)
         
         lists.forEach((list,index_lists)=> {
             
@@ -61,10 +74,11 @@ async function load() {
                 for (let i = 0; i < task.length; i++) {
                    
                     if(index_lists==index_task){//cad que la tache fait partie de cette liste
-                       
+                        MyEtiquette=etiquette.filter(e=>e.info.task_id==task[i].id)
+                        // console.log(MyEtiquette[0].info.etiquette_id)
                         list.boardList+=`
                                 <div class="task-card bg-white p-3 rounded shadow-sm" >
-                                    <task-card taskNumber="${task[i].id}"name="${task[i].name}" describtion="${task[i].describtion}" limiteDate="to day" etiquette="${task[i].id}"></task-card>
+                                    <task-card taskNumber="${task[i].id}"name="${task[i].name}" describtion="${task[i].describtion}" limiteDate="to day" etiquette="${MyEtiquette[0].info.etiquette_id}"></task-card>
         
                                 </div>           
                         `;

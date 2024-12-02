@@ -1,38 +1,7 @@
-const defaultEtiquette={
-    0: { 
-        name:'High Priority',
-        style:"bg-red-100 text-red-600",
-     },       
-    1:{
-        name:'Design',
-        style:'bg-blue-100 text-blue-600',
-    },
-    2:{
-        name: `Medium`,
-        style:"bg-yellow-100 text-yellow-600",
-    } ,          
-  
-    3:{
-        name:`Development`,
-        style:"bg-purple-100 text-purple-600",
-    },
-    4:{
-        name:`Research`,
-        style:"bg-indigo-100 text-indigo-600"
-    },
-    5:{
-        name:`Low Priority`,
-        style:"bg-green-100 text-green-600",
-    },
-    6:{
-        name:"QA",
-        style:"bg-orange-100 text-orange-600"
-    },
-    7:{
-        name:`Completed`,
-        style:"bg-gray-100 text-gray-600"
-    },
-}
+const getEtiquette=await api.invoke('Etiquette:findAll');
+const defaultEtiquette=getEtiquette.result
+
+
 export class Taskcard extends HTMLElement{
     constructor()
     {
@@ -44,7 +13,7 @@ export class Taskcard extends HTMLElement{
         this.limiteDate=this.getAttribute('limiteDate')
         this.etiquette=  this.getAttribute('etiquette') ? this.getAttribute('etiquette').split(','):[];
        
-
+        // console.log(this.taskNumber,this.etiquette)
         this.innerHTML=this.render();
         
         
@@ -55,10 +24,9 @@ export class Taskcard extends HTMLElement{
     }
     
 
-    connectedCallback() {
+    async connectedCallback() {
         
       this.Listener()
-     
      
       }
       
@@ -80,7 +48,7 @@ export class Taskcard extends HTMLElement{
         let htmletiquette=""
         
              this.etiquette.forEach(e => {
-             htmletiquette+=`<span class="px-2 py-1 text-xs rounded ${defaultEtiquette[Number(e)].style}">${defaultEtiquette[e].name}</span>`;
+             htmletiquette+=`<span class="px-2 py-1 text-xs rounded ${defaultEtiquette.filter(a=>a.id==e)[0].style}">${defaultEtiquette.filter(a=>a.id==e)[0].name}</span>`;
              });
          
 
