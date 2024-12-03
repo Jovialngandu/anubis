@@ -55,7 +55,12 @@ static eventToAdd={
         this.Listener()
         const project=await this.getProject()
         this.setProjects(this.projectList,project)
+        document.querySelectorAll('.project_click').forEach((element) => {//procedure de l'appel à la fonctiion d'affichage d'un projet
+            const number=element.getAttribute('number')
+            element.addEventListener('click',()=> load(number))
+        });
         
+
 
     }
 
@@ -76,10 +81,10 @@ static eventToAdd={
     createElementProject( id,name='Project',ImageCategory=`<i class="fas fa-code text-purple-600"></i>`){
       
         // creatiion d'un element visuel du projet dans la sidebar
-        let content =document.createElement("a");
-        content.setAttribute("href","");
+        let content =document.createElement("button");
+        // content.setAttribute("href","");
         content.setAttribute("number",id)
-        content.classList="flex items-center space-x-2 p-2 rounded hover:bg-gray-200"
+        content.classList="flex items-center space-x-2 w-full p-2 rounded hover:bg-gray-200 project_click"
         content.innerHTML=` <div class="w-8 h-8 bg-purple-100 rounded flex items-center justify-center">
                                ${ImageCategory}
                             </div>
@@ -135,5 +140,7 @@ static eventToAdd={
         const project= await window.api.invoke('Project:findAll')
         return project.result
     }
+
+
     
 }

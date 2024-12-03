@@ -9,11 +9,15 @@ pour chaque tache on recupere les etiquettes associé
 pour eviter les erreur des id null on mettra result à 0_(bref o verra)
 */
 
-
-async function load() {
+async function load(id=null) {
     try{
         //projet actuel
-        project= await window.api.invoke('Project:findFirst');
+        if(id){
+            project= await window.api.invoke('Project:findById',[id]);
+        }else{
+            project= await window.api.invoke('Project:findFirst');
+        }
+       
         // console.log('Project',project)
         //les listes du projet
         lists= await window.api.invoke('List:findWhere',[project.id,'project_id']);
@@ -97,7 +101,7 @@ async function load() {
         parentBoardList.innerHTML+=` <div  x-add="true"class="board-list">
                         <button class="add-list_ w-full h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center text-gray-600">
                             <i class="fas fa-plus mr-2"></i>
-                            <span>Add another list</span>
+                            <span>Add  list</span>
                         </button>
                     </div>`
     }catch(error){
