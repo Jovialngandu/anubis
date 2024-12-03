@@ -48,7 +48,7 @@ async function load() {
         // console.log('etiquette_task',etiquette_tasks)
 
         promisesEtiquette=etiquette_tasks.map(async(etiquette_task)=>{
-            
+            if(etiquette_task.length==0)return null
             const result= await window.api.invoke('Etiquette:findById',[etiquette_task[0].etiquette_id])
             result.info=etiquette_task[0];
             return result
@@ -74,11 +74,15 @@ async function load() {
                 for (let i = 0; i < task.length; i++) {
                    
                     if(index_lists==index_task){//cad que la tache fait partie de cette liste
-                        MyEtiquette=etiquette.filter(e=>e.info.task_id==task[i].id)
+
+                        
+                        MyEtiquette=etiquette.filter(e=>{
+                            if(e !=null)
+                            return e.info.task_id==task[i].id})
                         // console.log(MyEtiquette[0].info.etiquette_id)
                         list.boardList+=`
                                 <div class="task-card bg-white p-3 rounded shadow-sm" >
-                                    <task-card taskNumber="${task[i].id}"name="${task[i].name}" describtion="${task[i].describtion}" limiteDate="to day" etiquette="${MyEtiquette[0].info.etiquette_id}"></task-card>
+                                    <task-card taskNumber="${task[i].id}"name="${task[i].name}" describtion="${task[i].describtion}" limiteDate="to day" etiquette="${(MyEtiquette[0])?MyEtiquette[0].info.etiquette_id:''}"></task-card>
         
                                 </div>           
                         `;
