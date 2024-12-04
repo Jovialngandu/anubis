@@ -58,6 +58,7 @@ export class Boardlist extends HTMLElement{
     }
     connectedCallback(){
         this.Listener()
+        this.openModal()
        
     }
     Listener()//permet de faire correpondre chaque ecouteur à sa fonction
@@ -102,5 +103,7 @@ export class Boardlist extends HTMLElement{
         this.slotElement[0].removeChild(toRemove)
     }
     
-    
+    openModal(){
+        this.shadowRoot.querySelector('#add').addEventListener('click',()=>document.querySelector('task-modal').style.display="block")
+    }
 }

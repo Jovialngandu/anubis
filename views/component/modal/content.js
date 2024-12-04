@@ -1,11 +1,8 @@
-export  class TaskModal  extends HTMLElement{
-    constructor(){
-        super();
-        this.innerHTML=`
-        <div class="modal fixed inset-0 flex items-center justify-center z-50">
+export let contents=`
+        <div class="modal fixed inset-0 flex items-center justify-center z-50 ">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4">
             <div class="p-6">
-                <div class="flex items-center justify-between mb-4 close_btn_modal">
+                <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center space-x-2">
                         <i class="fas fa-tasks text-gray-500"></i>
                         <h2 class="text-xl font-semibold text-gray-800">Market Search</h2>
@@ -176,13 +173,4 @@ export  class TaskModal  extends HTMLElement{
         </div>
       
     </div>
-        `
-    }
-    connectedCallback(){
-        this.closeModal()
-
-    }
-    closeModal(){
-        document.querySelector('.close_btn_modal').addEventListener('click',()=>this.style.display="none")
-    }
-}
+        `;
