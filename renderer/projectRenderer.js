@@ -71,7 +71,7 @@ async function load(id=null) {
         
         lists.forEach((list,index_lists)=> {
             
-            list.boardList=`<bord-list name="${list.name}">
+            list.boardList=`<bord-list name="${list.name}" num_list_="${list.id}">
                                 <div class="space-y-3" slot="task-card">`;
             tasks.forEach((task,index_task)=> {
                 

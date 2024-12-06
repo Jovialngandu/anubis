@@ -6,7 +6,7 @@ export class Boardlist extends HTMLElement{
         super();
         
         this.name=this.getAttribute('name');
-        
+        this.num_list_=this.getAttribute('num_list_');
         let content= document.createElement("div")
         content.classList="board-list bg-gray-100 rounded-lg p-3";
         
@@ -30,7 +30,7 @@ export class Boardlist extends HTMLElement{
                          <slot id="slot" name="task-card"></slot>
                         
 
-                        <button id="add" class="add  mt-3 w-full p-2 text-gray-600 hover:bg-gray-200 rounded flex items-center justify-center">
+                        <button number_board="" id="add" class="add  mt-3 w-full p-2 text-gray-600 hover:bg-gray-200 rounded flex items-center justify-center">
                             <i class="fas fa-plus mr-2"></i>
                             <span>Add a card</span>
                         </button>
@@ -104,6 +104,10 @@ export class Boardlist extends HTMLElement{
     }
     
     openModal(){
-        this.shadowRoot.querySelector('#add').addEventListener('click',()=>document.querySelector('task-modal').style.display="block")
+        this.shadowRoot.querySelector('#add').addEventListener('click',()=>{
+            document.querySelector('task-modal').style.display="block"
+            document.querySelector('task-modal').init()
+            document.querySelector('task-modal').List=this.num_list_
+        })
     }
 }
