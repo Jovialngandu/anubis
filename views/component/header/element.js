@@ -7,6 +7,11 @@ export class HeaderElement extends HTMLElement{
         // input.addEventListener('',()=>{this.querySelector(".modal").style.display="block"})
         
     }
+    connectedCallback(){
+       this.querySelector('#new_project_btn').addEventListener('click',()=>{
+        
+       })
+    }
    
 }
 

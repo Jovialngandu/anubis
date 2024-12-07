@@ -53,23 +53,10 @@ static eventToAdd={
     async connectedCallback(){
 
         this.Listener()
-        const project=await this.getProject()
-        this.setProjects(this.projectList,project)
+        await this.loadProject()
+        
 
-        document.querySelectorAll('.project_click').forEach((element) => {//procedure de l'appel à la fonctiion d'affichage d'un projet
-            const number=element.getAttribute('number')
-            element.addEventListener('click',async()=> {
-                load(number)
-                await document.querySelector('task-modal').init()
-                await document.querySelector('task-modal').loadList(number)
-                await document.querySelector('task-modal').rechangeEtiquette()
-                await document.querySelector('task-modal').changeList()
-               
-                
-               
-            });
-
-        });
+        
         
 
 
@@ -150,6 +137,24 @@ static eventToAdd={
     async getProject(){
         const project= await window.api.invoke('Project:findAll')
         return project.result
+    }
+    async loadProject(){
+        const project=await this.getProject()
+        this.projectList.innerHTML=''
+        this.setProjects(this.projectList,project)
+
+        document.querySelectorAll('.project_click').forEach((element) => {//procedure de l'appel à la fonctiion d'affichage d'un projet
+            const number=element.getAttribute('number')
+            element.addEventListener('click',async()=> {
+                load(number)
+                await document.querySelector('task-modal').init()
+                await document.querySelector('task-modal').loadList(number)
+                await document.querySelector('task-modal').rechangeEtiquette()
+                await document.querySelector('task-modal').changeList()       
+               
+            });
+
+        });
     }
 
 

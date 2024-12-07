@@ -8,13 +8,14 @@ export const content_header=` <nav class="bg-white border-b border-gray-200 fixe
                 <div class="flex items-center space-x-6 ">
                         
                 </div> 
-                <div class="flex items-center space-x-2 pl-4">
+                <div class="flex items-center space-x-2 pl-4 hidden">
                     <span class="font-semibold text-gray-700">Recent</span>
                     <i class="fas fa-chevron-down text-gray-500 text-sm"></i>
                 </div>
-                <button class="px-3  h-6 bg-blue-50 text-blue-600 rounded hover:bg-blue-100">
-                    Create
+                <button id="new_project_btn" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"  class="px-3  h-6 bg-blue-50 font-bold text-blue-600 rounded hover:bg-blue-100 ">
+                    New Project
                 </button>
+                
             </div>
 
             <div class="flex items-center space-x-4">
@@ -24,14 +25,14 @@ export const content_header=` <nav class="bg-white border-b border-gray-200 fixe
                 </div>
               <button class="p-2 hover:bg-gray-100 rounded">
                     <i class="fas fa-bell text-gray-600"></i>
-                </button>-->
+                </button>
                 
                 <button class="p-2 hover:bg-gray-100 rounded">
                     <i class="fas fa-info-circle text-gray-600"></i>
                 </button>
                 <button class="p-2 hover:bg-gray-100 rounded">
                     <i class="fas fa-cog text-gray-600"></i>
-                </button>            
+                </button> -->           
             </div>
         </div>
     </nav>
