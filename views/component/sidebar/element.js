@@ -7,7 +7,7 @@ export class Sidebar extends HTMLElement{
             <div class="p-4">
                 
 
-                <div class="space-y-2">
+                <div class="space-y-2 hidden">
                     <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-200">
                         <i class="fas fa-columns text-gray-600"></i>
                         <span class="text-gray-700">Boards</span>

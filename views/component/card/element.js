@@ -6,6 +6,8 @@ export class Taskcard extends HTMLElement{
     constructor()
     {
         super();
+        this.list_id=this.getAttribute('list_id')
+        this.list_name=this.getAttribute('list_name')
         this.taskNumber=this.getAttribute('taskNumber');
         this.name=this.getAttribute('name');
         this.describtion=this.getAttribute('describtion')
@@ -27,6 +29,10 @@ export class Taskcard extends HTMLElement{
     async connectedCallback() {
         
       this.Listener()
+      this.addEventListener('click',()=>{
+        document.querySelector('tasksecond-modal').open(this)
+        document.querySelector('tasksecond-modal').loadList(project.id)
+      })
      
       }
       
@@ -73,11 +79,11 @@ export class Taskcard extends HTMLElement{
                     <h4 class="font-medium text-gray-800 mb-2">${this.name}</h4>
                     <p class="text-sm text-gray-600 mb-3">${this.describtion}</p>
                     <div class="flex items-center justify-between">
-                        <div class="flex items-center text-gray-500 text-sm">
+                        <div class="flex items-center text-gray-500 text-sm hidden">
                             <i class="fa-solid fa-paperclip mr-1"></i>
                             <span>${this.numberOffAtache}</span>
                         </div>
-                        <div class="flex items-center text-gray-500 text-sm">
+                        <div class="flex items-center text-gray-500 text-sm hidden">
                                 
                             <span class="text-xs text-gray-500">Date limite: ${this.limiteDate}</span>
                         </div>

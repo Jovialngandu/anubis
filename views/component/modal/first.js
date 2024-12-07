@@ -21,16 +21,16 @@ export  class TaskModal  extends HTMLElement{
                            <span id_etiquette="" class="et_  px-2 py-1 text-xs font-medium bg-purple-100 text-purple-600 rounded ">Développement</span>   
                            </div>                   <div>
                            <label class="block text-sm font-medium text-gray-700 mt-4">Title</label>
-                           <input id="title_tasker"  type="text"  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400 ">
+                           <input contenteditable="true" id="title_tasker"  type="text"  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400 ">
                        </div>
                         <div class="mb-6">
                             <h3 class="text-sm font-medium text-gray-700 mb-2">Description</h3>
-                            <textarea  id="describtion_tasker" class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" 
+                            <textarea  contenteditable="true" id="describtion_tasker" class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" 
                                       placeholder="Add a more detailed description..."></textarea>
-                        <h3 class="text-sm font-medium text-gray-700 mb-2">Date</h3>
+                        <h3 class="text-sm font-medium text-gray-700 mb-2 hidden">Date</h3>
                           <div class="flex">
-                                <time-picker class="mr-3"></time-picker>
-                                <date-picker class=""></date-picker>
+                                <!--<time-picker class="mr-3"></time-picker>
+                                <date-picker class=""></date-picker>-->
                         </div>
                                       </div>
                       
@@ -126,8 +126,8 @@ export  class TaskModal  extends HTMLElement{
         this.querySelector('#validate_tasker').addEventListener('click', async()=>{
             const value=this.getAllValue()
             if(value.title && value.id_list){
-                const confirm=window.confirm('are you sure to save this card ?')
-                if(confirm){
+                // const confirm=window.confirm('are you sure to save this card ?')
+               {
                     await window.api.invoke('Task:insert',[{name:value.title,describtion:value.describtion,list_id:value.id_list}])
                     if(value.id_etiquette){
                         const task=await api.invoke('Task:findLast')
@@ -137,8 +137,9 @@ export  class TaskModal  extends HTMLElement{
                 }
             }
             this.style.display="none"
-            
+          
         })
+      
       
     }
     closeModal(){

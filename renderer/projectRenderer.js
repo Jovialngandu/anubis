@@ -86,7 +86,7 @@ async function load(id=null) {
                         // console.log(MyEtiquette[0].info.etiquette_id)
                         list.boardList+=`
                                 <div class="task-card bg-white p-3 rounded shadow-sm" >
-                                    <task-card taskNumber="${task[i].id}"name="${task[i].name}" describtion="${task[i].describtion}" limiteDate="to day" etiquette="${(MyEtiquette[0])?MyEtiquette[0].info.etiquette_id:''}"></task-card>
+                                    <task-card list_id="${list.id}" list_name="${list.name}" taskNumber="${task[i].id}"name="${task[i].name}" describtion="${task[i].describtion}" limiteDate="to day" etiquette="${(MyEtiquette[0])?MyEtiquette[0].info.etiquette_id:''}"></task-card>
         
                                 </div>           
                         `;

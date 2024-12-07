@@ -20,7 +20,7 @@
         <side-bar slot="side-bar">
         </side-bar> 
         <main class="flex-1 overflow-x-auto main_" slot="main">
-            <div class="p-6">
+            <div class="p-6" >
                 <!-- Board Header -->
                 <secondheader-element project_name="">              
                 </secondheader-element>   
@@ -33,9 +33,15 @@
                     <!-- Add List Button-->
                 </div>
             </div>
-        </main>
-        <task-modal slot="modal" class="hidden">
-        </task-modal>  
+        </main >
+        <div  slot="modal">
+            <task-modal class="hidden">
+            </task-modal>  
+            <tasksecond-modal class="hidden">
+    
+            </tasksecond-modal>
+        </div>
+        
     </layout-principale>   
  <p id="info"></p>
 <script src="slot.js" type="module"></script> 
