@@ -99,7 +99,7 @@ async function load(id=null) {
             
         });
         parentBoardList.innerHTML+=` <div  x-add="true"class="board-list">
-                        <button class="add-list_ w-full h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center text-gray-600">
+                       <button id="add_list_" class="add-list_ w-full h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center text-gray-600">
                             <i class="fas fa-plus mr-2"></i>
                             <span>Add  list</span>
                         </button>
@@ -107,6 +107,9 @@ async function load(id=null) {
     }catch(error){
         console.error('error',error)
     }
+    document.querySelector('#add_list_').addEventListener('click',()=>{
+        document.querySelector('create-list').style.display="block"
+    })
 }
 
 load()//Call de la fonction d'affichage de ces donnés

@@ -146,7 +146,7 @@ static eventToAdd={
         document.querySelectorAll('.project_click').forEach((element) => {//procedure de l'appel à la fonctiion d'affichage d'un projet
             const number=element.getAttribute('number')
             element.addEventListener('click',async()=> {
-                load(number)
+                await load(number)
                 await document.querySelector('task-modal').init()
                 await document.querySelector('task-modal').loadList(number)
                 await document.querySelector('task-modal').rechangeEtiquette()
