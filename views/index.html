@@ -14,6 +14,19 @@
     <script src="../public/assets/js/fontawesome.min.js"></script>   
     <script src="../public/assets/js/datepicker.min.js"></script>
 </head>  
+<div  slot="modal">
+    <task-modal class="hidden">
+    </task-modal>  
+    <tasksecond-modal class="hidden">
+
+    </tasksecond-modal>
+    <create-project>
+    </create-project>
+    <create-list  class="hidden">
+    </create-list>
+    <update-list-modal class="hidden">       
+    </update-list-modal>
+</div>
     <layout-principale>
         <header-element slot="header-element">
         </header-element>
@@ -34,17 +47,7 @@
                 </div>
             </div>
         </main >
-        <div  slot="modal">
-            <task-modal class="hidden">
-            </task-modal>  
-            <tasksecond-modal class="hidden">
-    
-            </tasksecond-modal>
-            <create-project>
-            </create-project>
-            <create-list  class="hidden">
-            </create-list>
-        </div>
+       
         
     </layout-principale>   
  <p id="info"></p>

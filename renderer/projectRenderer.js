@@ -71,7 +71,7 @@ async function load(id=null) {
         
         lists.forEach((list,index_lists)=> {
             
-            list.boardList=`<bord-list name="${list.name}" num_list_="${list.id}">
+        list.boardList=`<bord-list name="${list.name}" num_list_="${list.id}" describtion_list_="${list.describtion}">
                                 <div class="space-y-3" slot="task-card">`;
             tasks.forEach((task,index_task)=> {
                 
@@ -110,6 +110,10 @@ async function load(id=null) {
     document.querySelector('#add_list_').addEventListener('click',()=>{
         document.querySelector('create-list').style.display="block"
     })
+}
+function open_update(id,name,describtion){
+    document.querySelector('update-list-modal').set(id,name,describtion)
+    document.querySelector('update-list-modal').style.display="block"
 }
 
 load()//Call de la fonction d'affichage de ces donnés

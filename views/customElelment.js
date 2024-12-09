@@ -11,6 +11,7 @@ import { SecondModalTask } from "./component/modal/second.js";
 import { Timepicker } from "./component/modal/timepicker.js";
 import { Datepicker } from "./component/modal/datepicker.js";
 import { CreateListModal } from "./component/modal/createlist.js";
+import { UpdateList } from "./component/modal/updatelist.js";
 
 await window.customElements.define('time-picker',Timepicker);
 await window.customElements.define('date-picker',Datepicker)
@@ -21,6 +22,7 @@ await window.customElements.define('bord-list',Boardlist );
 await window.customElements.define('task-card',Taskcard);
 await window.customElements.define('notification-element',NotificationElement);
 await window.customElements.define('side-bar',Sidebar)
+await window.customElements.define('update-list-modal',UpdateList)
 await window.customElements.define('create-list', CreateListModal)
 await window.customElements.define('create-project', CreateprojectModal)
 await window.customElements.define('tasksecond-modal',SecondModalTask)
